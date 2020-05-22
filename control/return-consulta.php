@@ -18,22 +18,29 @@
 
 			//CHAMANDO A FUNÇÃO PARA VALIDAR O CPF
 
-			if (valida_cpf($nucpf))
+			try 
 			{
-				//remove tudo que não for número do CPF inserido
 
-				$nucpf = preg_replace( '/[^0-9]/is', '', $nucpf );
+				valida_cpf($nucpf);
 
-				//instancia da classe Consulta
-
-				$consulta = new Consulta();
-
-				echo $consulta->consultaCpf($nucpf);
-			}
-			else
+			} 
+			catch (Exception $e) 
 			{
-				return "<script>alert('CPF INVÁLIDO!')</script>";
+
+				echo $e->getMessage();
+
 			}
+			
+			//remove tudo que não for número do CPF inserido
+
+			$nucpf = preg_replace( '/[^0-9]/is', '', $nucpf );
+
+			//instancia da classe Consulta
+
+			$consulta = new Consulta();
+
+			return $consulta->consultaCpf($nucpf);
+
 
 		}
 		elseif ($opcao == 2 && isset($nureg))
@@ -48,7 +55,7 @@
 
 			$consulta = new Consulta();
 
-			echo $consulta->consultaHabilitacao($nucart);
+			return $consulta->consultaHabilitacao($nucart);
 
 		}
 	}

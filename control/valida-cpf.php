@@ -57,7 +57,9 @@ function valida_cpf( $cpf = false ) {
 	
 	// Verifica se o CPF foi enviado
 	if ( ! $cpf ) {
-		return false;
+		//return false;
+		throw new Exception("Por favor preencher o CPF.");
+		
 	}
 
 	// Remove tudo que não é número do CPF
@@ -67,7 +69,9 @@ function valida_cpf( $cpf = false ) {
 	// Verifica se o CPF tem 11 caracteres
 	// Ex.: 02546288423 = 11 números
 	if ( strlen( $cpf ) != 11 ) {
-		return false;
+		//return false;
+		throw new Exception("Verifique se digitou corretamente o CPF.");
+		
 	}	
 
 	// Captura os 9 primeiros dígitos do CPF
@@ -85,8 +89,10 @@ function valida_cpf( $cpf = false ) {
 		// CPF válido
 		return true;
 	} else {
-		// CPF inválido
-		return false;
+		// CPF inválido, return false;
+
+		throw new Exception("CPF inválido.");
+		
 	}
 }
 ?>
