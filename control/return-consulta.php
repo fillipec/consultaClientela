@@ -27,7 +27,9 @@
 			catch (Exception $e) 
 			{
 
-				echo $e->getMessage();
+				return $e->getMessage();
+
+				return false;
 
 			}
 			
@@ -38,6 +40,17 @@
 			//instancia da classe Consulta
 
 			$consulta = new Consulta();
+
+			try {
+
+				$consulta->consultaCpf($nucpf);
+
+			} catch (Exception $e) {
+
+				return $e->getMessage();
+
+				return false;
+			}
 
 			return $consulta->consultaCpf($nucpf);
 
@@ -54,6 +67,20 @@
 			//instancia da classe Consulta
 
 			$consulta = new Consulta();
+
+			try {
+				
+				$consulta->consultaHabilitacao($nucart);
+
+			} 
+			catch (Exception $e) 
+			{
+
+				return $e->getMessage();
+				
+				return false;
+
+			}
 
 			return $consulta->consultaHabilitacao($nucart);
 

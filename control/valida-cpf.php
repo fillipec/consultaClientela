@@ -7,7 +7,8 @@
  * @return bool True para CPF correto - False para CPF incorreto
  *
  */
-function valida_cpf( $cpf = false ) {
+function valida_cpf( $cpf = false )
+{
 	// Exemplo de CPF: 025.462.884-23
 	
 	/**
@@ -19,14 +20,17 @@ function valida_cpf( $cpf = false ) {
 	 * @return int Os digitos enviados concatenados com o último dígito
 	 *
 	 */
-	if ( ! function_exists('calc_digitos_posicoes') )  {
-		function calc_digitos_posicoes( $digitos, $posicoes = 10, $soma_digitos = 0 ) {
+	if ( ! function_exists('calc_digitos_posicoes') )
+	{
+		function calc_digitos_posicoes( $digitos, $posicoes = 10, $soma_digitos = 0 )
+		{
 			// Faz a soma dos digitos com a posição
 			// Ex. para 10 posições: 
 			//   0    2    5    4    6    2    8    8   4
 			// x10   x9   x8   x7   x6   x5   x4   x3  x2
 			// 	 0 + 18 + 40 + 28 + 36 + 10 + 32 + 24 + 8 = 196
-			for ( $i = 0; $i < strlen( $digitos ); $i++  ) {
+			for ( $i = 0; $i < strlen( $digitos ); $i++  ) 
+			{
 				$soma_digitos = $soma_digitos + ( $digitos[$i] * $posicoes );
 				$posicoes--;
 			}
@@ -36,10 +40,13 @@ function valida_cpf( $cpf = false ) {
 			$soma_digitos = $soma_digitos % 11;
 
 			// Verifica se $soma_digitos é menor que 2
-			if ( $soma_digitos < 2 ) {
+			if ( $soma_digitos < 2 )
+			{
 				// $soma_digitos agora será zero
 				$soma_digitos = 0;
-			} else {
+			} 
+			else 
+			{
 				// Se for maior que 2, o resultado é 11 menos $soma_digitos
 				// Ex.: 11 - 9 = 2
 				// Nosso dígito procurado é 2
@@ -56,7 +63,8 @@ function valida_cpf( $cpf = false ) {
 	}
 	
 	// Verifica se o CPF foi enviado
-	if ( ! $cpf ) {
+	if ( ! $cpf )
+	{
 		//return false;
 		throw new Exception("Por favor preencher o CPF.");
 		
@@ -68,7 +76,8 @@ function valida_cpf( $cpf = false ) {
 
 	// Verifica se o CPF tem 11 caracteres
 	// Ex.: 02546288423 = 11 números
-	if ( strlen( $cpf ) != 11 ) {
+	if ( strlen( $cpf ) != 11 )
+	{
 		//return false;
 		throw new Exception("Verifique se digitou corretamente o CPF.");
 		
@@ -85,14 +94,16 @@ function valida_cpf( $cpf = false ) {
 	$novo_cpf = calc_digitos_posicoes( $novo_cpf, 11 );
 	
 	// Verifica se o novo CPF gerado é identico ao CPF enviado
-	if ( $novo_cpf === $cpf ) {
+	if ( $novo_cpf === $cpf )
+	{
 		// CPF válido
 		return true;
-	} else {
+	} 
+	else 
+	{
 		// CPF inválido, return false;
 
 		throw new Exception("CPF inválido.");
 		
 	}
 }
-?>

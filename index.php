@@ -22,10 +22,12 @@
 	</head>
 	<body>
 		<!-- Cabeçalho -->
-		<header class="container" style="text-align: center">
-			
-			<h1>Consulta Clientela</h1>
-		
+		<header>
+			<div class="navbar navbar-light bg-light shadow-sm" >
+
+				<h1>Consulta Clientela</h1>
+				
+			</div>
 		</header>
 		
 		<!--chamada PHP inclusão de Classes e Funções -->
@@ -90,7 +92,7 @@
 								$nureg = $_POST['nureg'];
 								$opcao = $_POST['opcao'];
 
-								echo returnConsulta($nureg,$opcao);
+								echo "<tbody><tr><td>".returnConsulta($nureg,$opcao)."</td></tr></tbody>";
 							}
 						}
 						

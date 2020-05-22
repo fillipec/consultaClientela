@@ -5,9 +5,9 @@
 	 */
 	class Conexao
 	{
-		private $user = 'USUARIO';
-		private $pwd = 'SENHA';
-		private $bd = 'BANCO';
+		private $user = 'usuario';
+		private $pwd = 'senha';
+		private $bd = 'bancodedados';
 
 		private $conn;
 		

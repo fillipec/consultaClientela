@@ -39,13 +39,15 @@
 						$status = "CADASTRO VENCIDO";	
 					}
 
-					return "<tbody><tr><td>".utf8_encode($row[0])."</td><td>".utf8_encode($row[1])."</td><td>".utf8_encode($row[2])."</td><td>".utf8_encode($row[3])."</td><td>".utf8_encode($status)."</td></tr></tbody>";
+					return utf8_encode($row[0])."</td><td>".utf8_encode($row[1])."</td><td>".utf8_encode($row[2])."</td><td>".utf8_encode($row[3])."</td><td>".utf8_encode($status);
 
 				}
 			}
 			else
 			{
-				echo "<script>alert('CPF NÃO ENCONTRADO!')</script>";
+			
+				throw new Exception("CPF NÃO ENCONTRADO!");
+				
 			}
 
 			//FECHA A CONEXÃO
@@ -80,14 +82,16 @@
 						$status = "CADASTRO VENCIDO";	
 					}
 
-					return "<tbody><tr><td>".utf8_encode($row[0])."</td><td>".utf8_encode($row[1])."</td><td>".utf8_encode($row[2])."</td><td>".utf8_encode($row[3])."</td><td>".utf8_encode($status)."</td></tr></tbody>";
+					return utf8_encode($row[0])."</td><td>".utf8_encode($row[1])."</td><td>".utf8_encode($row[2])."</td><td>".utf8_encode($row[3])."</td><td>".utf8_encode($status);
 
 				}
 				
 			}
 			else
 			{
-				echo "<script>alert('CARTEIRINHA NÃO ENCONTRADA!')</script>";
+
+				throw new Exception("HABILITAÇÃO SESC NÃO ENCONTRADA");
+				
 			}
 
 			//FECHA A CONEXÃO
